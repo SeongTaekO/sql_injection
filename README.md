@@ -19,8 +19,11 @@ SELECT * FROM table WHERE id = 'sql_injection' AND pw = 'sql_injection’
 
 WHERE절의 조건이 항상 참이 되므로 모든 행이 반환됩니다.
 
+
+
 표현식
 - (\d)*?'\s*?or\s(1=1|true|\'\d*\'=\'\d*\')
+- or\s+('1'='1'|true|1=1)
 
 ---
 ### 2. UNION SELECT
@@ -35,10 +38,13 @@ UNION은 두 개 이상의 SELECT문의 결과를 하나의 결과로 만들어�
 
 위 예시의 쿼리문들을 이용해 컬럼의 개수 및 데이터베이스의 정보를 알아내는데 사용할 수 있습니다.
 
+
+
 표현식
 - (\d)*?\'\s*?union\sselect\s(\d+\s*?\,\s*?)*\d+\s*?(#)
 - (\d)*?\'\s*?union\sselect\s(\d*?\s*?\,\s*?)*\d*?\s*?table_name\s(\d*?\s*?\,\s*?)*\d*?\s*?from\sinformation_schema\.tables\s(where\stable_schema\s*?\=\s*?\'(.*)\')*?
-
+- select \d+(\s*,\s*\d+)+
+- select.*table_name.*from\s*information_schema.tables
 
 ---
 ### 3. DB 정보 확인
@@ -46,8 +52,11 @@ database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름�
 - ' UNION SELECT 1,database() #`
 - ' UNION SELECT database(), 2 #`
 
+
+
 표현식
 - (\d)*?\'\s*?union\sselect\s(\d*?\s*?\,\s*?)*\d*?\s*?database\(\)
+- select.*database()
 
 ---
 ### 4. 컬럼 길이 확인
@@ -58,9 +67,11 @@ database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름�
 
 위 쿼리를 보면 이름의 길이를 순차적으로 증가시키며, 데이터베이스 구조를 탐색하려는 의도임을 알 수 있습니다.
 
+
+
 표현식
 - (\d)*?\'\s*?and\s\(select\s\d\sfrom\sinformation_schema\.columns\swhere\stable_schema\=\'(.*)\'(\sand\stable_name\=\'(.*)\')*?(\sand\slength\(column_name\)\=\d)*?
-
+- select.*from.*where.*length\(.*\)
 
 ---
 ### 5. 컬럼 이름 확인
@@ -69,6 +80,8 @@ database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름�
 - ' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='guestbook' LIMIT 2,1 #
 - ' UNION select 1,column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='users' and table_schema='dvwa' #
 
+
+
 표현식
 - (\d)*?\'\s*?union\sselect\s(\d*?\s*?\,\s*?)*\d*?\s*?column_name
-
+- select.*column_name.*from\s*information_schema.columns
