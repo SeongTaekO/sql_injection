@@ -19,6 +19,9 @@ SELECT * FROM table WHERE id = 'sql_injection' AND pw = 'sql_injection’
 
 WHERE절의 조건이 항상 참이 되므로 모든 행이 반환됩니다.
 
+표현식
+- (\d)*?'\s*?or\s(1=1|true|\'\d*\'=\'\d*\')
+
 ---
 ### 2. UNION SELECT
 UNION은 두 개 이상의 SELECT문의 결과를 하나의 결과로 만들어줍니다. 이때 각 SELECT문은 같은 수의 컬럼을 가져야 하며, 각 열의 데이터 타입이 일치해야 합니다. 이러한 특성을 이용해 데이터베이스의 구조나 정보를 알아낼 수 있습니다. 사용된 payload를 확인해보면 컬럼의 길이, 테이블 이름, 컬럼의 데이터를 알아내는데 사용되었습니다.
@@ -32,12 +35,19 @@ UNION은 두 개 이상의 SELECT문의 결과를 하나의 결과로 만들어�
 
 위 예시의 쿼리문들을 이용해 컬럼의 개수 및 데이터베이스의 정보를 알아내는데 사용할 수 있습니다.
 
+표현식
+- (\d)*?\'\s*?union\sselect\s(\d+\s*?\,\s*?)*\d+\s*?(#)
+- (\d)*?\'\s*?union\sselect\s(\d*?\s*?\,\s*?)*\d*?\s*?table_name\s(\d*?\s*?\,\s*?)*\d*?\s*?from\sinformation_schema\.tables\s(where\stable_schema\s*?\=\s*?\'(.*)\')*?
+
 
 ---
 ### 3. DB 정보 확인
 database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름을 반환합니다. 이 함수를 사용해 현재 사용중인 데이터베이스의 이름을 알아내 데이터베이스의 구조를 파악해 SQL 인젝션 공격을 계획할 수 있게 됩니다.
 - ' UNION SELECT 1,database() #`
 - ' UNION SELECT database(), 2 #`
+
+표현식
+- (\d)*?\'\s*?union\sselect\s(\d*?\s*?\,\s*?)*\d*?\s*?database\(\)
 
 ---
 ### 4. 컬럼 길이 확인
@@ -48,6 +58,10 @@ database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름�
 
 위 쿼리를 보면 이름의 길이를 순차적으로 증가시키며, 데이터베이스 구조를 탐색하려는 의도임을 알 수 있습니다.
 
+표현식
+- (\d)*?\'\s*?and\s\(select\s\d\sfrom\sinformation_schema\.columns\swhere\stable_schema\=\'(.*)\'(\sand\stable_name\=\'(.*)\')*?(\sand\slength\(column_name\)\=\d)*?
+
+
 ---
 ### 5. 컬럼 이름 확인
 이 페이로드는 information_schema를 이용해 특정 테이블의 컬럼 이름을 추출합니다. LIMIT 절을 사용해 특정 위치의 컬럼 이름을 선택합니다.
@@ -55,5 +69,6 @@ database() 함수는 MySQL에서 현재 연결된 데이터베이스의 이름�
 - ' UNION SELECT 1,column_name FROM information_schema.columns WHERE table_name='guestbook' LIMIT 2,1 #
 - ' UNION select 1,column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name='users' and table_schema='dvwa' #
 
-
+표현식
+- (\d)*?\'\s*?union\sselect\s(\d*?\s*?\,\s*?)*\d*?\s*?column_name
 
